@@ -55,7 +55,7 @@ Os Web Components são um conjunto de tecnologias que permite a criação de com
    ```
 
 ### 3. **HTML Templates:**
-   Os elementos `<template>` e `<slot>` (en-US) permitem que você escreva templates de marcação que não são exibidas na página. Elas podem então ser reutilizadas várias vezes como modelo de estrutura de um elemento customizado.
+   Os elementos `<template>` e `<slot>` permitem que você escreva templates de marcação que não são exibidas na página. Elas podem então ser reutilizadas várias vezes como modelo de estrutura de um elemento customizado.
 
    ```html
    <template id="myTemplate">
