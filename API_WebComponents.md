@@ -1,55 +1,46 @@
 # HTML5: API e Web Components
 
-O HTML5 trouxe consigo uma série de avanços significativos em relação às suas versões anteriores, introduzindo recursos poderosos e flexíveis que impulsionam o desenvolvimento web moderno. Duas áreas-chave que destacam a evolução do HTML5 são as APIs (Interfaces de Programação de Aplicações) e os Web Components. Vamos explorar cada uma dessas características para entender como elas contribuem para a criação de aplicações web mais dinâmicas e eficientes.
+O HTML5 trouxe consigo uma série de avanços significativos em relação às suas versões anteriores, introduzindo recursos poderosos e flexíveis que impulsionam o desenvolvimento web moderno. Duas áreas-chave que destacam a evolução do HTML5 são as APIs (Interfaces de Programação de Aplicações) e os Web Components.
 
 ## HTML5 API
 
-As APIs do HTML5 são conjuntos de funcionalidades e métodos que possibilitam a interação entre a aplicação web e o navegador, proporcionando aos desenvolvedores maior controle sobre o ambiente de execução. Algumas das APIs mais notáveis incluem:
+As APIs (Application Programming Interfaces) são construções disponíveis nas linguagens de programação que permitem a desenvolvedores criar funcionalidades complexas mais facilmente. Tais construções abstraem o código mais complexo, proporcionando o uso de sintaxes mais simples em seu lugar. Em seguida temos alguns exemplos de APIs.
 
 ### 1. **API de Geolocalização:**
-   A Geolocalização permite que os navegadores obtenham informações sobre a localização física do usuário. Isso é especialmente útil em aplicações que necessitam de serviços baseados em localização, como mapas interativos e aplicações de previsão do tempo.
+   A Geolocalização permite que os navegadores obtenham informações sobre a localização do usuário. Isso é especialmente útil em serviços baseados em localização, como mapas interativos e aplicações de previsão do tempo.
 
    ```html
    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
    ```
 
 ### 2. **API de Armazenamento Local (localStorage e sessionStorage):**
-   Essa API permite que os desenvolvedores armazenem dados localmente no navegador do usuário. Isso é útil para manter o estado da aplicação mesmo após a atualização da página ou fechamento do navegador.
+   Essa API permite que os desenvolvedores armazenem dados localmente no navegador do usuário. Mantendo o estado da das variáveis mesmo após a atualização da página ou fechamento do navegador.
 
    ```javascript
    // Armazenamento local
    localStorage.setItem('chave', 'valor');
    ```
 
-### 3. **API de Canvas:**
-   A API de Canvas permite a criação de gráficos e animações dinâmicas através de scripts. Desenvolvedores podem desenhar diretamente no elemento `<canvas>`.
-
-   ```html
-   <canvas id="meuCanvas" width="400" height="200"></canvas>
-   ```
-
-   ```javascript
-   const canvas = document.getElementById('meuCanvas');
-   const contexto = canvas.getContext('2d');
-   ```
+### 3. **APIs de terceiros**
+   Não fazem parte do navegador e é necessário resgatar ela de algum outro jeito da web, por exemplo algumas APIs de terceiros (ex: Twitter, Facebook), que permitem o uso de alguma funcionalidade da plataforma em suas páginas na web. Um exemplo é a possibilidade de mostrar os últimos tweets em sua página.
 
 ## Web Components
 
 Os Web Components são um conjunto de tecnologias que permite a criação de componentes reutilizáveis e encapsulados, facilitando a construção de interfaces de usuário modulares e escaláveis. Os principais pilares dos Web Components são:
 
 ### 1. **Custom Elements:**
-   Com a introdução dos Custom Elements, os desenvolvedores podem criar seus próprios elementos HTML personalizados. Isso simplifica a estrutura do código e facilita a manutenção.
+   Com isso é possivel criar seus próprios elementos HTML personalizados. Isso simplifica a estrutura do código e facilita a manutenção.
 
    ```javascript
-   class MeuComponente extends HTMLElement {
-     // Lógica do componente
+   class generateComponent extends HTMLElement {
+     // Some code
    }
 
-   customElements.define('meu-componente', MeuComponente);
+   customElements.define('generateComponent', generateComponent);
    ```
 
 ### 2. **Shadow DOM:**
-   O Shadow DOM permite encapsular o estilo e a estrutura de um componente, impedindo que estilos externos afetem o componente e vice-versa.
+   Permite encapsular o estilo e a estrutura de um componente, impedindo que estilos externos afetem o componente e vice-versa.
 
    ```javascript
    const shadowRoot = this.attachShadow({ mode: 'open' });
@@ -58,25 +49,33 @@ Os Web Components são um conjunto de tecnologias que permite a criação de com
        /* Estilos encapsulados */
      </style>
      <div>
-       <!-- Conteúdo encapsulado -->
+       <!-- Content -->
      </div>
    `;
    ```
 
 ### 3. **HTML Templates:**
-   Os Templates HTML permitem a definição de fragmentos de código que podem ser clonados e utilizados dinamicamente.
+   Os elementos `<template>` e `<slot>` (en-US) permitem que você escreva templates de marcação que não são exibidas na página. Elas podem então ser reutilizadas várias vezes como modelo de estrutura de um elemento customizado.
 
    ```html
-   <template id="meuTemplate">
+   <template id="myTemplate">
      <p>Conteúdo do template</p>
    </template>
    ```
 
    ```javascript
-   const template = document.getElementById('meuTemplate');
+   const template = document.getElementById('myTemplate');
    const clone = document.importNode(template.content, true);
    ```
+### 4. **Decorators.**
+   Eles aplicam templates com base em seletores CSS e JS para criar mudanças na página, o elemento `content` dentro do template será substituído com o conteúdo do elemento de decoração
+   ```javascript
+   <form-submit>
+    <p>Conteúdo</p>
+   </form-submit>
 
-## Conclusão
-
-O HTML5, por meio de suas APIs e Web Components, proporciona uma base sólida para o desenvolvimento web moderno. As APIs oferecem funcionalidades avançadas, enquanto os Web Components facilitam a criação de interfaces reutilizáveis e modulares. Ao combinar esses recursos, os desenvolvedores podem criar aplicações web mais poderosas, eficientes e fáceis de manter. A evolução contínua dessas tecnologias promete continuar a moldar o panorama do desenvolvimento web no futuro.
+   class FormSubmit extends HTMLElement {
+      /* some code */
+   }
+   customElements.define('form-single-submit', FormSingleSubmit);
+```
